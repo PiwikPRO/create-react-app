@@ -65,6 +65,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "5.0.2",
+    "postcss-simple-vars": "^6.0.2",
     "precss": "^4.0.0",
     "prompts": "2.4.0",
     "react-app-polyfill": "^2.0.0",
