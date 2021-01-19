@@ -126,14 +126,16 @@ module.exports = function (webpackEnv) {
           // Necessary for external CSS imports to work
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
-          plugins: () => [
-            require('postcss-import')(),
-            require('postcss-global-import')(),
-            require('precss')(),
-            require('postcss-simple-vars'),
-            require('postcss-mixins')(),
-            require('autoprefixer')({ grid: true }),
-          ],
+          postcssOptions: {
+            plugins: () => [
+              require('postcss-import')(),
+              require('postcss-global-import')(),
+              require('precss')(),
+              require('postcss-simple-vars'),
+              require('postcss-mixins')(),
+              require('autoprefixer')({ grid: true }),
+            ],
+          },
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         },
       },
