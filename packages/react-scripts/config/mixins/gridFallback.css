@@ -1,0 +1,14 @@
+@define-mixin gridFallback $verticalGap $horizontalGap $itemMinWidth {
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -$verticalGap;
+    margin-left: -$horizontalGap;
+
+    > div {
+      flex-basis: $itemMinWidth;
+      margin-top: $verticalGap;
+      margin-left: $horizontalGap;
+    }
+  }
+}
