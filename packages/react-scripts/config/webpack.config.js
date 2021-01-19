@@ -127,7 +127,7 @@ module.exports = function (webpackEnv) {
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
           plugins: () => [
-            require('postcss-mixins')({ mixinsDir: path.join(__dirname, './mixins') }),
+            require('postcss-mixins')(),
             require('postcss-import')(),
             require('postcss-global-import')(),
             require('precss')(),
