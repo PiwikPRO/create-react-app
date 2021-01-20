@@ -132,6 +132,7 @@ module.exports = function (webpackEnv) {
               require('postcss-global-import')(),
               require('precss')(),
               require('postcss-simple-vars'),
+              require('postcss-nested'),
               require('postcss-mixins')(),
               require('autoprefixer')({ grid: true }),
             ],
