@@ -39,8 +39,6 @@ const appPackageJson = require(paths.appPackageJson);
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
-const generateProfiling = process.env.WEBPACK_PROFILE !== 'false';
-
 const webpackDevClientEntry = require.resolve(
   'react-dev-utils/webpackHotDevClient'
 );
@@ -63,8 +61,8 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 const swSrc = paths.swSrc;
 
 // style files regexes
-const cssRegex = /\.css$/;
-const cssModuleRegex = /\.module\.css$/;
+// const cssRegex = /\.css$/;
+const cssModuleRegex = /\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -125,17 +123,17 @@ module.exports = function (webpackEnv) {
           // Necessary for external CSS imports to work
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
-          postcssOptions: {
-            plugins: () => [
-              require('postcss-import')(),
-              require('postcss-global-import')(),
-              require('precss')(),
-              require('postcss-simple-vars'),
-              require('postcss-nested'),
-              require('postcss-mixins')(),
-              require('autoprefixer')({ grid: true }),
-            ],
-          },
+          // postcssOptions: {
+          //   plugins: () => [
+          //     require('postcss-import')(),
+          //     require('postcss-global-import')(),
+          //     require('precss')(),
+          //     require('postcss-simple-vars'),
+          //     require('postcss-nested'),
+          //     require('postcss-mixins')(),
+          //     require('autoprefixer')({ grid: true }),
+          //   ],
+          // },
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
         },
       },
@@ -471,21 +469,21 @@ module.exports = function (webpackEnv) {
             // to a file, but in development "style" loader enables hot editing
             // of CSS.
             // By default we support CSS Modules with the extension .module.css
-            {
-              test: cssRegex,
-              exclude: cssModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 1,
-                sourceMap: isEnvProduction
-                  ? shouldUseSourceMap
-                  : isEnvDevelopment,
-              }),
-              // Don't consider CSS imports dead code even if the
-              // containing package claims to have no side effects.
-              // Remove this when webpack adds a warning or an error for this.
-              // See https://github.com/webpack/webpack/issues/6571
-              sideEffects: true,
-            },
+            // {
+            //   test: cssRegex,
+            //   exclude: cssModuleRegex,
+            //   use: getStyleLoaders({
+            //     importLoaders: 1,
+            //     sourceMap: isEnvProduction
+            //       ? shouldUseSourceMap
+            //       : isEnvDevelopment,
+            //   }),
+            //   // Don't consider CSS imports dead code even if the
+            //   // containing package claims to have no side effects.
+            //   // Remove this when webpack adds a warning or an error for this.
+            //   // See https://github.com/webpack/webpack/issues/6571
+            //   sideEffects: true,
+            // },
             // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
             // using the extension .module.css
             {
@@ -561,10 +559,10 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
-      generateProfiling &&
-        new webpack.debug.ProfilingPlugin({
-          outputPath: path.join(process.cwd(), 'profiling/profileEvents.json'),
-        }),
+      // generateProfiling &&
+      //   new webpack.debug.ProfilingPlugin({
+      //     outputPath: path.join(process.cwd(), 'profiling/profileEvents.json'),
+      //   }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
